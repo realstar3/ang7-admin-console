@@ -1,0 +1,101 @@
+<div class="login-container bg-light">
+  <div class="login-box">
+    <div class="d-inline-block ml-3 language-container" ngbDropdown>
+      <button
+        [innerText]="currentLanguage"
+        id="language-dropdown"
+        class="btn btn-sm btn-outline-primary language-button"
+        ngbDropdownToggle
+      ></button>
+      <div ngbDropdownMenu aria-labelledby="language-dropdown">
+        <button
+          *ngFor="let language of languages"
+          [innerText]="language"
+          (click)="setLanguage(language)"
+          class="dropdown-item"
+        ></button>
+      </div>
+    </div>
+
+    <div class="title-container">
+      <h1 translate>APP_NAME</h1>
+      <p translate>Administration console</p>
+    </div>
+
+    <div class="container">
+      <div class="card col-md-4 mt-3 mx-auto">
+        <div class="card-body">
+          <h4 class="card-title text-center" placement="top" ngbTooltip="Tooltip on top">
+            <span translate>Sign in</span>
+          </h4>
+          <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+            <div class="form-group">
+              <label class="d-block">
+                <span class="sign-in-label" translate [class.disabled]="isLoading">Username</span>
+                <ng-template #emailTipContent>{{ emailTooltipText }}</ng-template>
+                <input
+                  [ngbTooltip]="emailTipContent"
+                  [placement]="errorTooltipPlacement"
+                  [tooltipClass]="'tooltip-error'"
+                  [autoClose]="false"
+                  [triggers]="'manual'"
+                  [disabled]="isLoading"
+                  #tooltipEmailRef="ngbTooltip"
+                  type="text"
+                  class="form-control"
+                  formControlName="username"
+                  autocomplete="username"
+                />
+              </label>
+              <label class="d-block">
+                <span class="sign-in-label" translate [class.disabled]="isLoading">Password</span>
+                <ng-template #passwordTipContent>{{ passwordTooltipText }}</ng-template>
+                <input
+                  [ngbTooltip]="passwordTipContent"
+                  [placement]="errorTooltipPlacement"
+                  [tooltipClass]="'tooltip-error'"
+                  [autoClose]="false"
+                  [triggers]="'manual'"
+                  [disabled]="isLoading"
+                  #tooltipPasswordRef="ngbTooltip"
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  autocomplete="current-password"
+                  required
+                />
+                <div class="text-right">
+                  <small>
+                    <a [routerLink]="['/forgot']" translate>Forgot password?</a>
+                  </small>
+                </div>
+              </label>
+
+              <div class="row">
+                <div class="col">
+                  <label class="checkbox-remember-me">
+                    <app-checkbox
+                      [checked]="loginForm.controls.rememberMe.value"
+                      (onChangeAction)="onChangeRememberMe($event)"
+                    >
+                    </app-checkbox>
+                    <span translate>Remember me</span>
+                  </label>
+                </div>
+                <div class="col text-right">
+                  <button class="btn btn-primary" type="submit" [disabled]="isEmptyForm() || isLoading">
+                    <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+                    <span translate>Sign in</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div>Don't have an account?</div>
+            <div><a [routerLink]="['/signup']">Create new account</a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

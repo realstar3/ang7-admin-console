@@ -1,0 +1,34 @@
+:host {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 10px;
+
+  .checkbox-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    /deep/ .mat-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 20px;
+      position: relative;
+      left: -2px;
+      top: -2px;
+    }
+
+    [type="checkbox"] {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<div class="dashboard">
+  <div class="dashboard-container">
+    <nav
+      [ngClass]="{
+        'px-0 d-md-block sidebar': true,
+        'menu-hidden': isMenuHidden()
+      }"
+    >
+      <div class="sidebar-sticky">
+        <div class="sidebar-heading"></div>
+        <ul *ngIf="adminlevel == 1" class="nav flex-column">
+          <li class="nav-item">
+            <a
+              class="nav-link d-flex align-items-center justify-content-between"
+              [class.active-item]="showDashboard"
+              (click)="showDashboard = true; adminlevel = 1"
+              routerLinkActive="active"
+            >
+              <div class="name-box d-flex align-items-center">
+                <i class="fas fa-tag text-secondary"> </i>
+                <span class="item-name pl-2">{{ currentmanagementName }}</span>
+              </div>
+              <i class="menu-arrow fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li *ngFor="let managementName of managementNames" class="nav-item">
+            <a
+              class="nav-link d-flex align-items-center justify-content-between"
+              [class.active-item]="!showDashboard && managementName === currentmanagementName"
+              (click)="getChildManagementNames(managementName)"
+              routerLinkActive="active"
+            >
+              <div class="name-box d-flex align-items-center">
+                <i class="fas fa-tag text-secondary"> </i>
+                <span class="item-name pl-2">{{ managementName }}</span>
+              </div>
+              <i class="menu-arrow fas fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+        <ul *ngIf="adminlevel == 2" class="nav flex-column">
+          <li class="nav-item">
+            <a
+              class="nav-link py-3 d-flex align-items-center justify-content-between"
+              [class.active-item]="showDashboard"
+              (click)="handleEntityManagementClick()"
+              routerLinkActive="active"
+            >
+              <div class="name-box d-flex align-items-center">
+                <i class="fas fa-tag text-secondary"> </i>
+                <span class="item-name pl-2">{{ currentmanagementName }}</span>
+              </div>
+              <i class="menu-arrow fas fa-angle-right"></i>
+            </a>
+          </li>
+
+          <li *ngFor="let childmanagementName of childmanagementNames" class="nav-item">
+            <a
+              class="nav-link d-flex align-items-center justify-content-between"
+              [class.active-item]="!showDashboard && childmanagementName === currentEntityName"
+              (click)="getEntityFields(childmanagementName)"
+              routerLinkActive="active"
+            >
+              <div class="name-box d-flex align-items-center">
+                <i class="fas fa-tag text-secondary"> </i>
+                <span class="item-name pl-2">{{ childmanagementName }}</span>
+              </div>
+              <i class="menu-arrow fas fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div
+      *ngIf="adminlevel == 1"
+      class="px-2 d-md-block dashboard-body"
+      [class.full-body]="sharedService.isMenuHidden()"
+    >
+      <div class="admin-dashboard px-2">
+        <app-dashboard></app-dashboard>
+      </div>
+    </div>
+    <div
+      *ngIf="adminlevel == 2"
+      class="px-2 d-md-block dashboard-body"
+      [class.full-body]="sharedService.isMenuHidden()"
+    >
+      <app-entity
+        [entityFields]="currentEntityFields"
+        [entityName]="currentEntityName"
+        [showContent]="!showDashboard"
+        (onBack)="handleBack()"
+      ></app-entity>
+    </div>
+  </div>
+</div>

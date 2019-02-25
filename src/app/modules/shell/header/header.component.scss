@@ -1,0 +1,90 @@
+@import "src/theme/theme-variables";
+
+.navbar {
+  margin-bottom: $spacer;
+  background-color: $blue;
+  .menu-toggler {
+    background: white;
+    border: 0;
+    padding: 0.5rem 0.7rem;
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: $gray-200;
+    }
+
+    &.active {
+      font-weight: bold;
+      &:hover {
+        color: white;
+      }
+    }
+
+    span,
+    i {
+      font-size: 1.25rem;
+    }
+  }
+
+  .header-logo span {
+    line-height: 1.5rem;
+    &.description {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.nav-link.dropdown-toggle {
+  cursor: pointer;
+}
+
+.user-dropdown {
+  &::after {
+    display: none;
+  }
+  .user-icon,
+  .user-photo {
+    color: white;
+    font-size: 2rem !important;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    .menu-toggler {
+      padding: 0.3rem 0.4rem;
+    }
+
+    .header-logo {
+      margin: 0;
+      padding-left: 0.5rem !important;
+      span {
+        line-height: 1.4rem;
+        &.app-title {
+          font-size: 1.2rem;
+        }
+        &.description {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+
+  .user-dropdown {
+    font-size: 0.8rem;
+    .user-icon,
+    .user-photo {
+      font-size: 1.6rem !important;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+:host {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /deep/ .progress {
+    width: calc(100vw - 4rem);
+    max-width: 20rem;
+  }
+}

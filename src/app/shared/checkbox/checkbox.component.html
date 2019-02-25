@@ -1,0 +1,11 @@
+<div class="checkbox-container">
+  <mat-icon *ngIf="checked" [color]="'primary'">check_box</mat-icon>
+  <mat-icon *ngIf="!checked" [color]="'primary'">check_box_outline_blank</mat-icon>
+  <input
+    type="checkbox"
+    class="form-check-input"
+    formControlName="remember"
+    (change)="onChange($event)"
+    [checked]="checked"
+  />
+</div>

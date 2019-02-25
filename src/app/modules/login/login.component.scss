@@ -1,0 +1,186 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+:host {
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+
+    .title-container {
+      font-family: "Istok Web", sans-serif;
+      color: theme-color("primary");
+      position: absolute;
+      z-index: 2;
+      left: 15px;
+      top: 0;
+      padding: 15px;
+
+      h1 {
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0;
+        line-height: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
+    .language-container {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      z-index: 2;
+
+      .dropdown-menu {
+        left: auto !important;
+        right: 0;
+      }
+    }
+
+    .card {
+      border-color: theme-color("primary");
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      .card-body {
+        .card-title {
+          color: theme-color("primary");
+          font-size: 2rem;
+          font-family: "Istok Web", sans-serif;
+          font-weight: bold;
+        }
+
+        .alert {
+          text-align: center;
+        }
+
+        .form-group {
+          margin-bottom: 2rem;
+
+          label {
+            padding-bottom: 1rem;
+
+            .sign-in-label {
+              color: theme-color("primary");
+              position: relative;
+              left: 10px;
+              top: 12px;
+              background: #fff;
+              padding: 0 6px;
+            }
+
+            input.form-control {
+              border-color: theme-color("primary");
+              height: calc(3rem);
+
+              &[disabled] {
+                color: #ababab;
+                border-color: #ddd;
+              }
+            }
+
+            &.checkbox-remember-me {
+              padding: 0;
+              margin: 0;
+              display: flex;
+              align-items: center;
+              height: 100%;
+            }
+
+            &.disabled {
+              color: #ababab;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ng-invalid.ng-touched:not(form) {
+    border-left: 4px solid theme-color("danger");
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  :host {
+    .login-container {
+      background-color: #fff !important;
+    }
+
+    .login-box {
+      .title-container {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        padding-left: 25px;
+
+        h1 {
+          font-size: 1.5rem;
+          margin: 0;
+        }
+
+        p {
+          font-size: 0.75rem;
+          margin: 0;
+        }
+      }
+
+      .language-container {
+        right: 25px;
+        top: 24px;
+      }
+
+      .card {
+        border-color: transparent;
+        box-shadow: none;
+        padding: 60px 8px 0;
+
+        .card-body {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  :host {
+    .login-box {
+      .card {
+        .card-body {
+          .form-group {
+            label {
+              &.checkbox-remember-me {
+                span {
+                  font-size: 0.8rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

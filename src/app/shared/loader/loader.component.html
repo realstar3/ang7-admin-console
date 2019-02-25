@@ -1,0 +1,7 @@
+<div [hidden]="!isLoading" class="text-xs-center">
+  <ngb-progressbar type="primary" [value]="progress" [striped]="true" [animated]="true">
+    <!-- TODO clarify is it need to display progress percents -->
+    <!--<i>{{progress}}%</i>-->
+    <div *ngIf="message" [innerText]="message"></div>
+  </ngb-progressbar>
+</div>

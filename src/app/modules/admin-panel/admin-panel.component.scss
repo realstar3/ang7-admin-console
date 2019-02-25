@@ -1,0 +1,108 @@
+@import "src/theme/theme-variables";
+
+.dashboard-container {
+  height: calc(100vh - 5.1rem);
+}
+
+.sidebar {
+  width: 16.7%;
+  position: absolute;
+  height: calc(100vh - 5.1rem);
+  transition: 0.3s ease-in-out;
+  &.menu-hidden {
+    transform: translate(-100%);
+    .sidebar-bottom {
+      width: 0;
+    }
+
+    .sidebar-sticky {
+      box-shadow: none;
+    }
+  }
+
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    height: 95%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fbfbfb;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.75);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: gray !important;
+
+    ul li {
+      padding: 0.5rem;
+      cursor: pointer;
+      width: 100%;
+      &:first-child {
+        border-bottom: 1px solid lightgray;
+        a {
+          padding-top: 0.8rem !important;
+          padding-bottom: 0.8rem !important;
+        }
+      }
+      .name-box {
+        width: 93%;
+        .item-name {
+          width: 90%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      a.active-item {
+        background: $color-102;
+      }
+    }
+  }
+
+  .sidebar-heading {
+    height: 0.7rem;
+    background-color: $blue;
+  }
+
+  .sidebar-logout {
+    position: absolute;
+    bottom: 5px;
+  }
+
+  .sidebar-bottom {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% + 1rem);
+    height: 2px;
+    background: lightgray;
+  }
+}
+
+.dashboard-body {
+  padding-right: 0;
+  min-width: 63%;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+  margin-left: 17%;
+  &.full-body {
+    margin-left: 0;
+    min-width: 100%;
+  }
+}
+
+.admin-dashboard {
+  border: 2px solid lightgray;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: black;
+}
+
+.shadow {
+  -webkit-box-shadow: 3px 3px 8px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 8px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 8px -5px rgba(0, 0, 0, 0.75);
+}

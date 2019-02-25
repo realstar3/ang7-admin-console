@@ -1,0 +1,21 @@
+{
+  "APP_NAME": "Hiber HAC",
+  "APP_DESCRIPTION": "Intelligent grocery platform",
+  "About": "A propos",
+  "Hello world !": "Bonjour le monde !",
+  "Home": "Accueil",
+  "Logged in as": "Connecté en tant que",
+  "Login": "Connexion",
+  "Administration console": "Console d'administration",
+  "Logout": "Déconnexion",
+  "Password": "Mot de passe",
+  "Password is required": "Mot de passe requis",
+  "Username": "Identifiant",
+  "Username is required": "Identifiant requis",
+  "Username or password incorrect.": "Identifiant ou mot de passe incorrect.",
+  "Remember me": "Rester connecté",
+  "Version": "Version",
+  "Sign in": "Se connecter",
+  "Username or password incorrect": "Nom d'utilisateur ou mot de passe incorrect",
+  "Next": "Suivant"
+}

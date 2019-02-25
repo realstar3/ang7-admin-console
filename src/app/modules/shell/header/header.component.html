@@ -1,0 +1,49 @@
+<header>
+  <nav class="navbar d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <button
+        class="menu-toggler d-flex"
+        type="button"
+        aria-label="Toggle navigation"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="!menuHidden"
+        [disabled]="!isAdminpanel()"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand pl-3 py-0 d-flex flex-column header-logo" [routerLink]="['/']">
+        <span class="app-title"><strong translate>APP_NAME</strong></span>
+        <span class="description"><strong translate>APP_DESCRIPTION</strong></span>
+      </a>
+    </div>
+    <div class="float-xs-none">
+      <div class="navbar-nav ml-auto d-flex align-items-center">
+        <div class="nav-item" ngbDropdown placement="bottom-right">
+          <a id="user-dropdown" class="nav-link d-flex align-items-center user-dropdown" ngbDropdownToggle>
+            <b class="text-white mr-2">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</b>
+            <i
+              class="user-icon fas fa-user-circle"
+              *ngIf="!currentUser?.imageUrl || currentUser?.imageUrl.length === 0"
+            ></i>
+            <img
+              class="user-photo"
+              [src]="currentUser.imageUrl"
+              *ngIf="currentUser?.imageUrl && currentUser?.imageUrl.length > 0"
+            />
+          </a>
+          <div ngbDropdownMenu aria-labelledby="user-dropdown">
+            <h6 class="dropdown-header">
+              <span translate>Logged in as </span> <b>{{ username }}</b>
+            </h6>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" *ngFor="let language of languages" (click)="setLanguage(language)">
+              {{ language }}
+            </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()" translate>Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
